@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+
+a {
+    font-family: "Raleway", sans-serif;
+    position: fixed;
+    bottom: 50%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background: none;
+    border: none;
+    border-radius: 20px;
+    z-index: 5;
+    transition: .3s;
+    cursor: pointer;
+}
+
+   @property --btn-p {
+        syntax: "<angle>";
+        inherits: true;
+        initial-value: 0deg;
+    }
+
+
+a:before {
+    content: "";
+  position: absolute;
+  inset: -8px;
+  padding: 8px;
+  border-radius: 28px; 
+  background: conic-gradient(from var(--btn-p,0deg),
+  #fd21eb ,
+        #0000 30deg 120deg,
+        #B721FF 150deg 180deg,
+        #0000 210deg 300deg,
+        #fd21eb 330deg
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: intersect
+}
+
+a:after {
+    content: "";
+    position: absolute;
+    inset: -100px;
+    background:
+        radial-gradient(80px at left  150px top    120px,#fd21eb 98%,#0000),
+        radial-gradient(80px at right 150px bottom 120px,#B721FF 98%,#0000);
+    filter: blur(60px);
+    opacity: .5;
+}
+
+a:before,
+a:after {
+    transition:.5s, 99999s 99999s transform, 99999s 99999s --btn-p;
+}
+a:hover {
+    box-shadow: 0 0 0 1px #666;
+}
+a:hover:after {
+    transform: rotate(3600deg);
+    transition: .5s,60s linear transform;
+}
+a:hover:before {
+    --btn-p: 3600deg;
+    transition: .5s,60s linear --btn-p;
+}
+a:hover:before {
+    background-color: #121121;
+}
